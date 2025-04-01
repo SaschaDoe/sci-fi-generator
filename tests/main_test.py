@@ -2,9 +2,10 @@ import sys
 
 from PySide6.QtTest import QTest
 
-from main import main
 import pytest
 from PySide6.QtWidgets import QApplication
+
+from src.main import main
 
 
 @pytest.fixture
@@ -17,7 +18,7 @@ def app_fixture():
 
     app.quit()
 
-
+@pytest.mark.ui
 def test_window_opens(app_fixture):
     # Call the main function
     window, _ = main()

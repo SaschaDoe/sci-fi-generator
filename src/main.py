@@ -4,7 +4,11 @@ from PySide6.QtWidgets import QMainWindow, QApplication, QLabel
 from src.ui.MainWindow import MainWindow
 
 def main():
-    app = QApplication(sys.argv)
+    if not QApplication.instance():
+        app = QApplication(sys.argv)
+    else:
+        app = QApplication.instance()
+
     window = MainWindow()
     window.show()
 

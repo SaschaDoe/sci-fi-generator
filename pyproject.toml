@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sci_fi_generator"
+version = "0.1.0"
+description = "Sci-Fi Generator"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"},
+]
+requires-python = ">=3.6"
+dependencies = [
+    "PySide6",
+    # Add other dependencies your project needs
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=6.0",
+    "pytest-qt",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+    "fast: Tests that execute quickly",
+    "slow: Tests that take longer to execute",
+    "ui: Tests related to the user interface",
+]
