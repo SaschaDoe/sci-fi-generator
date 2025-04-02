@@ -1,7 +1,9 @@
 import sys
 
 from PySide6.QtWidgets import QMainWindow, QApplication, QLabel
-from src.ui.MainWindow import MainWindow
+
+from ui.MainWindow import MainWindow
+
 
 def main():
     if not QApplication.instance():
