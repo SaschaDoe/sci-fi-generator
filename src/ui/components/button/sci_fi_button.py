@@ -10,7 +10,7 @@ class SciFiButton(QPushButton):
         super().__init__(text, parent)
 
     @classmethod
-    def New(cls, text="NEW", parent=None):
+    def Normal(cls, text="NEW", parent=None):
         button = cls(text, parent)
         button.setStyleSheet(SCI_FI_BUTTON_BASE)
         return button

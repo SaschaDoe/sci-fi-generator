@@ -1,0 +1,59 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.2.3">
+  <diagram name="Seite-1" id="bCAAPruz6RUpzytCMphy">
+    <mxGraphModel dx="948" dy="657" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="UbhAfCgBJNLEPeNy1WQr-2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="100" y="60" width="220" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="UbhAfCgBJNLEPeNy1WQr-1" value="Screens" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="100" y="110" width="120" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="UbhAfCgBJNLEPeNy1WQr-3" value="Widgets" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="180" y="230" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UbhAfCgBJNLEPeNy1WQr-4" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Screens vs. Widgets&lt;/h1&gt;&lt;p&gt;Screens are a special type of Widgets that are shown over the screen or the whole window. Widgets are that but also can be a special button.&lt;/p&gt;&lt;p&gt;I need that destinction to use the navigator mediator pattern&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="324" y="50" width="296" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="UbhAfCgBJNLEPeNy1WQr-5" value="NavigationMediator" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="414" y="410" width="156" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="UbhAfCgBJNLEPeNy1WQr-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="UbhAfCgBJNLEPeNy1WQr-6" target="UbhAfCgBJNLEPeNy1WQr-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="250" y="320" />
+              <mxPoint x="250" y="475" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UbhAfCgBJNLEPeNy1WQr-6" value="CivilisationGenerationScreen" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="280" y="300" width="199" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UbhAfCgBJNLEPeNy1WQr-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="UbhAfCgBJNLEPeNy1WQr-7" target="UbhAfCgBJNLEPeNy1WQr-5">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="740" y="320" />
+              <mxPoint x="740" y="475" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UbhAfCgBJNLEPeNy1WQr-7" value="MainMenuScreen" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="520" y="300" width="199" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="UbhAfCgBJNLEPeNy1WQr-10" value="Window" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="230" y="120" width="90" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UbhAfCgBJNLEPeNy1WQr-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="UbhAfCgBJNLEPeNy1WQr-11" target="UbhAfCgBJNLEPeNy1WQr-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UbhAfCgBJNLEPeNy1WQr-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="UbhAfCgBJNLEPeNy1WQr-11" target="UbhAfCgBJNLEPeNy1WQr-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UbhAfCgBJNLEPeNy1WQr-11" value="Window" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="462" y="400" width="60" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

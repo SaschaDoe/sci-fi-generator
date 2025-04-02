@@ -1,13 +1,26 @@
-from PySide6.QtWidgets import QMainWindow, QApplication, QWidget, QVBoxLayout, QLabel
-from PySide6.QtCore import Qt
-from ui.components.button.sci_fi_button import SciFiButton
+from PySide6.QtWidgets import QMainWindow, QApplication, QWidget, QVBoxLayout, QStackedWidget
+from ui.components.screens import BaseScreen
+from ui.components.screens.civilisation_generation_screen import CivilizationScreen
+from ui.components.screens.main_menu_screen import MainMenuScreen
+from ui.navigation.ScreenType import ScreenType
+from ui.navigation.mediator import NavigationMediator
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Sci-Fi Generator")
+        self._setup_window_geometry()
+        self._setup_widget_structure()
 
+        self.mediator = NavigationMediator(main_window=self, close_callback=self.close)
+
+        self._setup_screens()
+
+        self.mediator.navigate_to(ScreenType.MAIN_MENU)
+
+    def _setup_window_geometry(self):
+        """Configure the window size and position"""
         screen = QApplication.primaryScreen().availableGeometry()
         width = int(screen.width() * 0.9)
         height = int(screen.height() * 0.9)
@@ -15,31 +28,23 @@ class MainWindow(QMainWindow):
         y = int(screen.height() / 2 - height / 2)
         self.setGeometry(x, y, width, height)
 
-        # Create a central widget
-        central_widget = QWidget()
-        self.setCentralWidget(central_widget)
+    def _setup_widget_structure(self):
+        """Create widget stack"""
+        self.central_widget = QWidget()
+        self.setCentralWidget(self.central_widget)
 
-        # Create vertical layout
-        layout = QVBoxLayout(central_widget)
-        layout.setAlignment(Qt.AlignCenter)  # Center items in layout
+        self.main_layout = QVBoxLayout(self.central_widget)
+        self.main_layout.setContentsMargins(0, 0, 0, 0)
 
-        # Add label
-        self.label = QLabel("Sci-Fi Generator")
-        layout.addWidget(self.label, alignment=Qt.AlignCenter)
+        self.stacked_widget = QStackedWidget()
+        self.main_layout.addWidget(self.stacked_widget)
 
-        # Add spacing below label
-        layout.addSpacing(40)
+    def _setup_screens(self):
+        """Create all screen widgets and register them with the mediator"""
+        self._setup_screen(MainMenuScreen())
+        self._setup_screen(CivilizationScreen())
 
-        # Add NEW button
-        self.newButton = SciFiButton.New("New")
-        self.newButton.setFixedSize(200, 40)  # Fixed size
-        layout.addWidget(self.newButton, alignment=Qt.AlignCenter)
-
-        # Add spacing between buttons
-        layout.addSpacing(20)
-
-        # Add EXIT button below the NEW button
-        self.exitButton = SciFiButton.Exit("Exit")
-        self.exitButton.setFixedSize(200, 40)  # Fixed size
-        layout.addWidget(self.exitButton, alignment=Qt.AlignCenter)
-        self.exitButton.clicked.connect(self.close)
+    def _setup_screen(self, screen: BaseScreen):
+        screen.set_mediator(self.mediator)
+        self.stacked_widget.addWidget(screen)
+        self.mediator.register_screen(screen.screen_type, screen)
