@@ -1,0 +1,86 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+.env/
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Pipenv
+Pipfile.lock
+
+# Poetry
+poetry.lock
+
+# PyInstaller
+*.spec
+dist/
+build/
+
+# Wheel and Egg
+*.egg-info/
+*.egg
+*.whl
+
+# C extensions
+*.so
+*.c
+*.cpp
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# pytest cache
+.pytest_cache/
+
+# mypy, coverage, etc.
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+.cache/
+.tox/
+.nox/
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
+
+# Mac/Windows system files
+.DS_Store
+Thumbs.db
+
+# SQLite / local databases
+*.sqlite3
+*.db
+
+# dotenv / secrets
+*.env
+*.env.*
+
+# Node for frontend-hybrids
+node_modules/
+
+# IPython history
+.history
+
+# Profiling dumps
+*.prof
+
+# Backup files
+*.bak
+*.swp
+*.swo
+*.tmp

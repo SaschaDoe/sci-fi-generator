@@ -1,0 +1,1 @@
+[ ] Start screen has New and Exit Buttons
