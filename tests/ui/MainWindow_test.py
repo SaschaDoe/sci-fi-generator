@@ -5,6 +5,7 @@ from PySide6.QtWidgets import QApplication
 from PySide6.QtCore import Qt
 
 from src.main import main
+from ui.navigation.ScreenType import ScreenType
 
 
 @pytest.fixture
@@ -40,11 +41,14 @@ def test_exit_button_closes_window(app_fixture):
     window.destroyed.connect(on_window_destroyed)
 
     # Find and click the exit button
-    exit_button = window.exitButton
+    main_menu_screen = window.mediator.screens[ScreenType.MAIN_MENU]
+
+    # Now find the exit button within the main menu screen
+    exit_button = main_menu_screen.exitButton
     assert exit_button is not None, "Exit button not found"
 
     # Click the button
-    QTest.mouseClick(exit_button, Qt.LeftButton)
+    QTest.mouseClick(exit_button, Qt.MouseButton.LeftButton)
 
     # Wait for events to process
     QTest.qWait(100)
