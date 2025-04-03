@@ -3,37 +3,41 @@
 SCI_FI_BUTTON_BASE = """
     QPushButton {
         background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
-                                       stop:0 #002855, stop:1 #00509E);
+                                          stop:0 #002855, stop:1 #00509E);
         color: #5CFFFA;
         border: 2px solid #00A6ED;
-        border-radius: 5px;
+        border-radius: 6px;
         font-family: 'Rajdhani', sans-serif;
         font-weight: bold;
         font-size: 14px;
         padding: 8px 16px;
         min-width: 120px;
         min-height: 40px;
+        transition: all 0.3s ease-in-out;
     }
     QPushButton:hover {
         background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
-                                       stop:0 #003B7A, stop:1 #0067CC);
+                                          stop:0 #007ACC, stop:1 #00BFFF);
         border: 2px solid #5CFFFA;
         color: #FFFFFF;
+        text-shadow: 0 0 6px #5CFFFA;
     }
     QPushButton:pressed {
         background-color: #001529;
         border: 2px solid #00CCF5;
         padding-left: 18px;
+        color: #B2FFFF;
     }
 """
+
 
 SCI_FI_BUTTON_EXIT = """
     QPushButton {
         background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
-                                       stop:0 #5A0000, stop:1 #8B0000);
+                                          stop:0 #5A0000, stop:1 #8B0000);
         color: #FF9999;
         border: 2px solid #CC0000;
-        border-radius: 5px;
+        border-radius: 6px;
         font-family: 'Rajdhani', sans-serif;
         font-weight: bold;
         font-size: 14px;
@@ -43,13 +47,15 @@ SCI_FI_BUTTON_EXIT = """
     }
     QPushButton:hover {
         background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, 
-                                       stop:0 #8B0000, stop:1 #B20000);
+                                          stop:0 #B20000, stop:1 #FF1A1A);
         border: 2px solid #FF5555;
         color: #FFFFFF;
+        text-shadow: 0 0 5px #FF6666;
     }
     QPushButton:pressed {
         background-color: #5A0000;
         border: 2px solid #FF0000;
         padding-left: 18px;
+        color: #FFCCCC;
     }
 """
