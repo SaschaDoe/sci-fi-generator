@@ -5,8 +5,7 @@ from PySide6.QtTest import QTest
 import pytest
 from PySide6.QtWidgets import QApplication
 
-from src.main import main
-
+from main import main
 
 @pytest.fixture
 def app_fixture():

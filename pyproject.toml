@@ -22,8 +22,8 @@ test = [
 ]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = ["."]
+testpaths = ["src/tests"]
+pythonpath = ["src"]
 markers = [
     "fast: Tests that execute quickly",
     "slow: Tests that take longer to execute",

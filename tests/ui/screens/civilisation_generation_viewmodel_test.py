@@ -32,11 +32,13 @@ class TestCivilizationViewModel:
         vm = CivilizationViewModel()
         return vm
 
+    @pytest.mark.fast
     def test_initial_state(self, view_model: CivilizationViewModel):
         """Verify the ViewModel's state upon initialization."""
         assert not view_model.is_content_visible
         assert view_model.generate_button_text == "Generate"
 
+    @pytest.mark.fast
     def test_first_generation_request(self, view_model: CivilizationViewModel, qtbot):
         """Test the state changes and signal emissions on the first generation request."""
         received_args = {} # Dictionary to store received args
@@ -72,7 +74,7 @@ class TestCivilizationViewModel:
             view_model.generate_button_text_changed.disconnect(on_text_changed)
         except RuntimeError: pass # Ignore if already disconnected or error occurred
 
-
+    @pytest.mark.fast
     @pytest.mark.skipif(ScreenType is None, reason="ScreenType enum not available")
     def test_back_navigation_request(self, view_model: CivilizationViewModel, qtbot):
         """Test the back navigation request signal and implicit state reset."""

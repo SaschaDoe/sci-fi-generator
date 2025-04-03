@@ -4,7 +4,7 @@ from PySide6.QtTest import QTest
 from PySide6.QtWidgets import QApplication
 from PySide6.QtCore import Qt
 
-from src.main import main
+from main import main
 from ui.navigation.ScreenType import ScreenType
 
 
