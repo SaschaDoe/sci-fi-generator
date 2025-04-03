@@ -1,0 +1,20 @@
+from enum import Enum, auto
+
+class CultureType(Enum):
+    GREEK = auto()
+    APALAGIAN = auto()
+    CHINESE = auto()
+    JAPANESE = auto()
+    AFRICAN = auto()
+    NORDIC = auto()
+    MESOAMERICAN = auto()
+    MIDDLE_EASTERN = auto()
+    INDIAN = auto()
+    NOMADIC = auto()
+    TRIBAL = auto()
+    MODERN_URBAN_MONOCULTURE = auto()
+    VIRTUAL = auto()
+    BIO_ADAPTIVE = auto()
+    RELIGIOUS_THEOCRACY = auto()
+    CORPORATE_HEGEMONY = auto()
+    MACHINE_CULT = auto()

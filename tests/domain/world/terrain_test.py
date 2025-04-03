@@ -4,7 +4,7 @@ from domain.tables.world.biomes import Biome
 from domain.tables.world.geographic_features import GeographicFeature
 from domain.tables.world.hydrological_features import HydrologicalFeature
 from domain.tables.world.locational_terrains import LocationalTerrain
-from domain.world.terrain import Terrain
+from domain.domain_objects.world.terrain import Terrain
 
 @pytest.mark.fast
 def test_valid_terrain_creation():
