@@ -1,9 +1,11 @@
 from PySide6.QtWidgets import QMainWindow, QApplication, QWidget, QVBoxLayout, QStackedWidget
 from ui.components.screens import BaseScreen
 from ui.components.screens.civilisation_generation_screen import CivilizationScreen
+from ui.components.screens.leader_screen import LeaderScreen
 from ui.components.screens.main_menu_screen import MainMenuScreen
 from ui.navigation.ScreenType import ScreenType
 from ui.navigation.mediator import NavigationMediator
+from ui.navigation.screen_definition import _setup_screens
 
 
 class MainWindow(QMainWindow):
@@ -15,7 +17,7 @@ class MainWindow(QMainWindow):
 
         self.mediator = NavigationMediator(main_window=self, close_callback=self.close)
 
-        self._setup_screens()
+        _setup_screens(self)
 
         self.mediator.navigate_to(ScreenType.MAIN_MENU)
 
@@ -39,10 +41,7 @@ class MainWindow(QMainWindow):
         self.stacked_widget = QStackedWidget()
         self.main_layout.addWidget(self.stacked_widget)
 
-    def _setup_screens(self):
-        """Create all screen widgets and register them with the mediator"""
-        self._setup_screen(MainMenuScreen())
-        self._setup_screen(CivilizationScreen())
+
 
     def _setup_screen(self, screen: BaseScreen):
         screen.set_mediator(self.mediator)

@@ -1,8 +1,7 @@
 from PySide6.QtWidgets import QPushButton
-from PySide6.QtCore import QSize
-from PySide6.QtGui import QIcon
 
-from ui.components.button.sci_fi_button_styles import SCI_FI_BUTTON_EXIT, SCI_FI_BUTTON_BASE
+from ui.components.button.sci_fi_button_styles import SCI_FI_BUTTON_EXIT, SCI_FI_BUTTON_BASE,  \
+    SCI_FI_BUTTON_INLINE
 
 
 class SciFiButton(QPushButton):
@@ -13,6 +12,12 @@ class SciFiButton(QPushButton):
     def Normal(cls, text="NEW", parent=None):
         button = cls(text, parent)
         button.setStyleSheet(SCI_FI_BUTTON_BASE)
+        return button
+
+    @classmethod
+    def Inline(cls, text="Click", parent=None):
+        button = cls(text, parent)
+        button.setStyleSheet(SCI_FI_BUTTON_INLINE)
         return button
 
     @classmethod

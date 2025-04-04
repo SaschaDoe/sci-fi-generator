@@ -2,8 +2,10 @@ from PySide6.QtCore import QObject, Signal, Property
 
 import random
 
+from domain.domain_objects.character.leader.leader import Leader
 from domain.domain_objects.civilisation.civilisation import Civilization
 from domain.domain_objects.civilisation.civilisation_factory import CivilizationFactory
+from ui.navigation.ScreenType import ScreenType
 
 
 class CivilizationViewModel(QObject):
@@ -20,7 +22,7 @@ class CivilizationViewModel(QObject):
 
         self._is_content_visible = False
         self._generate_button_text = "Generate"
-
+        self._leader = Leader()
         self._civilization_name = ""
         self._tech_level = ""
         self._social_structure = ""
@@ -56,6 +58,11 @@ class CivilizationViewModel(QObject):
         self.reset_state()
         self.navigation_requested.emit(screen_type)
 
+    def request_leader_navigation(self, leader):
+        self.navigation_requested.emit(ScreenType.LEADER, leader)
+
+    def get_last_leader(self):
+        return self._leader
     def reset_state(self):
         if self._is_content_visible:
             print("ViewModel: Resetting state.")

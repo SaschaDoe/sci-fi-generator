@@ -15,3 +15,6 @@ class ScreenType(Enum):
 
     CIVILIZATION = auto()
     """The civilization generation screen"""
+
+    LEADER = auto()
+    """The leader (of a civilisation) screen"""

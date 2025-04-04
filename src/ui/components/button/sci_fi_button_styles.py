@@ -59,3 +59,25 @@ SCI_FI_BUTTON_EXIT = """
         color: #FFCCCC;
     }
 """
+
+SCI_FI_BUTTON_INLINE = """
+    QPushButton {
+        background-color: transparent;
+        color: #00FFFF;
+        border: 1px solid #00FFFF;
+        border-radius: 4px;
+        padding: 2px 6px;
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+    }
+    QPushButton:hover {
+        background-color: rgba(0, 255, 255, 0.1);
+        color: #FFFFFF;
+        border-color: #5CFFFA;
+    }
+    QPushButton:pressed {
+        background-color: rgba(0, 255, 255, 0.2);
+        color: #B2FFFF;
+    }
+"""

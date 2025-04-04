@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+from domain.domain_objects.character.leader.leader import Leader
 from domain.tables.civilisation.civilization_origin_event import CivilizationOriginEvent
 from domain.tables.civilisation.culture import CultureType
 from domain.tables.civilisation.migration_pattern import MigrationPattern
@@ -15,3 +16,4 @@ class Civilization:
     social_structure: SocialStructure
     migration_pattern: MigrationPattern
     dominant_profession: ModernCivilisationProfession
+    leader: Leader

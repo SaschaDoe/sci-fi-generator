@@ -48,24 +48,28 @@ class CivilizationScreen(BaseScreen):
         """)
         main_layout.addWidget(title_label)
 
-        # Result Display
-        self._generated_label = QLabel(" ")
-        self._generated_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self._generated_label.setWordWrap(True)
-        self._generated_label.setStyleSheet("""
+        self._generated_container = QWidget()
+        self._generated_layout = QFormLayout(self._generated_container)
+        self._generated_layout.setLabelAlignment(Qt.AlignmentFlag.AlignLeft)
+        self._generated_layout.setFormAlignment(Qt.AlignmentFlag.AlignCenter)
+        self._generated_layout.setSpacing(8)
+
+        self._generated_container.setStyleSheet("""
             font-size: 16px;
             color: #00FFFF;
             border: 2px solid #00FFFF;
             padding: 16px;
             border-radius: 12px;
             background-color: rgba(10, 20, 40, 0.75);
-            box-shadow: 0px 0px 12px #00FFFF;
         """)
-        main_layout.addWidget(self._generated_label)
-        self._generated_label.setVisible(False)
+        self._generated_container.setVisible(False)
+
+        main_layout.addWidget(self._generated_container)
 
         # Spacer to push buttons to bottom
         main_layout.addStretch(1)
+
+        from ui.components.button.sci_fi_button import SciFiButton
 
         # Generate button
         self._generate_button = SciFiButton.Normal("Generate Civilization")
@@ -82,28 +86,39 @@ class CivilizationScreen(BaseScreen):
         self._back_button.clicked.connect(lambda: self.view_model.request_back_navigation(ScreenType.MAIN_MENU))
         self.view_model.civilization_generated.connect(self._display_generated_civilization)
         self.view_model.navigation_requested.connect(self._handle_navigation)
-
     def _apply_initial_state(self):
         pass
-    @Slot(object)
-    def _handle_navigation(self, screen_type):
+
+    @Slot(object, object)
+    def _handle_navigation(self, screen_type, data):
         if self.mediator:
-            self.mediator.navigate_to(screen_type)
+            self.mediator.navigate_to(screen_type, data)
 
     @Slot(object)
     def _display_generated_civilization(self, civ):
-        text = f"""
-        <div style='font-size: 16px; color: #00FFFF;'>
-            <table style='width: 100%; border-collapse: collapse;'>
-                <tr><td style='padding: 6px; text-align: left;'><b>Name:</b></td><td style='text-align: right;'>{civ.name}</td></tr>
-                <tr><td style='padding: 6px; text-align: left;'><b>Origin:</b></td><td style='text-align: right;'>{civ.origin_event.name.replace('_', ' ').title()}</td></tr>
-                <tr><td style='padding: 6px; text-align: left;'><b>Culture:</b></td><td style='text-align: right;'>{civ.culture.name.replace('_', ' ').title()}</td></tr>
-                <tr><td style='padding: 6px; text-align: left;'><b>Social Structure:</b></td><td style='text-align: right;'>{civ.social_structure.name.replace('_', ' ').title()}</td></tr>
-                <tr><td style='padding: 6px; text-align: left;'><b>Migration Pattern:</b></td><td style='text-align: right;'>{civ.migration_pattern.name.replace('_', ' ').title()}</td></tr>
-                <tr><td style='padding: 6px; text-align: left;'><b>Dominant Profession:</b></td><td style='text-align: right;'>{civ.dominant_profession.name.replace('_', ' ').title()}</td></tr>
-            </table>
-        </div>
-        """
-        self._generated_label.setText(text)
-        self._generated_label.setVisible(True)
+        # Clear previous layout content
+        while self._generated_layout.count():
+            item = self._generated_layout.takeAt(0)
+            widget = item.widget()
+            if widget:
+                widget.setParent(None)
+
+        def format_text(value):
+            return value.name.replace('_', ' ').title()
+
+        # Leader button
+        leader_button = SciFiButton.Inline(civ.leader.name)
+        leader_button.clicked.connect(lambda: self.view_model.request_leader_navigation(civ.leader))
+
+        self._generated_layout.addRow(QLabel("<b>Name:</b>"), QLabel(civ.name))
+        self._generated_layout.addRow(QLabel("<b>Leader:</b>"), leader_button)
+        self._generated_layout.addRow(QLabel("<b>Origin:</b>"), QLabel(format_text(civ.origin_event)))
+        self._generated_layout.addRow(QLabel("<b>Culture:</b>"), QLabel(format_text(civ.culture)))
+        self._generated_layout.addRow(QLabel("<b>Social Structure:</b>"), QLabel(format_text(civ.social_structure)))
+        self._generated_layout.addRow(QLabel("<b>Migration Pattern:</b>"), QLabel(format_text(civ.migration_pattern)))
+        self._generated_layout.addRow(QLabel("<b>Dominant Profession:</b>"),
+                                      QLabel(format_text(civ.dominant_profession)))
+
+
+        self._generated_container.setVisible(True)
 

@@ -1,5 +1,6 @@
 import random
 
+from domain.domain_objects.character.leader.leader_factory import LeaderFactory
 from domain.domain_objects.civilisation.civilisation import Civilization
 from domain.tables.civilisation.civilization_origin_event import CivilizationOriginEvent
 from domain.tables.civilisation.culture import CultureType
@@ -9,6 +10,7 @@ from domain.tables.civilisation.social_structure import SocialStructure
 
 class CivilizationFactory:
     def __init__(self, rng: random.Random):
+        self.leader_factory = LeaderFactory(rng)
         self.rng = rng
 
     def create_random_civilization(self, name: str) -> Civilization:
@@ -19,4 +21,5 @@ class CivilizationFactory:
             social_structure=self.rng.choice(list(SocialStructure)),
             migration_pattern=self.rng.choice(list(MigrationPattern)),
             dominant_profession=self.rng.choice(list(ModernCivilisationProfession)),
+            leader=self.leader_factory.create_leader(name),
         )
